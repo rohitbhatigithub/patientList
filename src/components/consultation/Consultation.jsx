@@ -2,6 +2,8 @@ import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiFillPlusCircle } from "react-icons/ai";
+
+import Calendar from "react-calendar";
 const Consultation = () => {
     return (
         <div className="bg-white w-full h-[49vh] rounded-lg  scrollbar-thin scrollbar-track-slate-200   scrollbar-thumb-black overflow-y-auto">
@@ -24,7 +26,10 @@ const Consultation = () => {
                 </div>
 
                 {/* date */}
-                <div></div>
+                <div className="flex justify-center items-center my-2">
+                    {" "}
+                    <Calendar />
+                </div>
 
                 <div className="flex flex-col gap-2">
                     {" "}

@@ -3,6 +3,7 @@ import { MdLocationPin } from "react-icons/md";
 import Button from "../../components/Button/Button";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Avatar from "../../assets/avatar.png";
+
 const Profile = ({ hendleUpdatePatient, patientInfo }) => {
     const [isOpen, setIsOpen] = useState(true);
     const [editMode, seEditMode] = useState(false);

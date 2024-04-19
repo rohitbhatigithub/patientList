@@ -5,6 +5,7 @@ import { GiMedicines } from "react-icons/gi";
 import { CiShare1 } from "react-icons/ci";
 import PatientDetails from "../patientDetails/PatientDetails";
 import Consultation from "../consultation/Consultation";
+
 export default function Task({ patientDetail }) {
     return (
         <div className="  ">
@@ -12,7 +13,7 @@ export default function Task({ patientDetail }) {
             <div className="grid grid-col-1 md:grid-cols-2 gap-2 lg:gap-4 items-start bg-white px-4 py-2 rounded-lg">
                 <div className="w-[90%] ">
                     {/* heading */}
-                    <div className="text-xl font-bold text-teal-800">
+                    <div className="text-xl font-bold text-teal-800 mb-2">
                         Daily Read
                     </div>
                     {/* news Image */}

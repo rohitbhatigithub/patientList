@@ -7,27 +7,48 @@ import axios from "axios";
 
 function App() {
     const [patientData, setPatientData] = useState([]);
-    const [patientInfo, setPatientInfo] = useState();
+    const [patientDetail, setPatientDetail] = useState();
     const [activeTab, setActiveTab] = useState("/");
-    console.log(patientInfo);
     const API = "https://assessment.banoskolar.com/api/patientsList";
-
+    const PatientList = async () => {
+        try {
+            const data = await axios.get(API);
+            setPatientData(() => data.data.patients);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     useEffect(() => {
-        const PatientList = async () => {
-            try {
-                const data = await axios.get(API);
-                setPatientData(() => data.data.patients);
-            } catch (error) {
-                console.log(error);
-            }
-        };
         PatientList();
-    });
+    }, []);
 
+    const updatePatient = async (payload) => {
+        const URL = `http://assessment.banoskolar.com/api/patient-records/${payload.id}`;
+        try {
+            const data = await axios.put(URL, payload);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const hendleUpdatePatient = (patient) => {
+        updatePatient(patient);
+    };
+    useEffect(() => {
+        let patient = localStorage.getItem("patient");
+        if (patient) {
+            let p = JSON.parse(patient);
+            console.log(p);
+            setPatientDetail(p);
+        }
+    }, []);
     return (
         <>
-            {patientData.length == 0 ? (
-                <div>Loading</div>
+            {patientData.length === 0 ? (
+                <div className="w-full h-screen flex items-center justify-center">
+                    <div className="rounded-full p-10 border-t-4 border-black animate-spin"></div>
+                </div>
             ) : (
                 <div className="h-screen w-full">
                     <BrowserRouter>
@@ -41,15 +62,25 @@ function App() {
                                 element={
                                     <Home
                                         patientData={patientData}
-                                        setPatientInfo={setPatientInfo}
                                         setActiveTab={setActiveTab}
+                                        setPatientDetail={setPatientDetail}
+                                        patientDetail={patientDetail}
+                                        PatientList={PatientList}
                                     />
                                 }
                             />
 
                             <Route
                                 path="/profile"
-                                element={<Profile patientInfo={patientInfo} />}
+                                element={
+                                    <Profile
+                                        hendleUpdatePatient={
+                                            hendleUpdatePatient
+                                        }
+                                        setPatientDetail={setPatientDetail}
+                                        patientInfo={patientDetail}
+                                    />
+                                }
                             />
                         </Routes>
                     </BrowserRouter>

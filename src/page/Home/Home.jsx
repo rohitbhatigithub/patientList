@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Main from "../../components/main/Main";
 
-const Home = ({ patientData, setPatientInfo, setActiveTab }) => {
+const Home = ({
+    patientData,
+    setActiveTab,
+    patientDetail,
+    setPatientDetail,
+    PatientList,
+}) => {
+    useEffect(() => {
+        PatientList();
+    }, [PatientList]);
     return (
         <div>
             <Main
                 patientData={patientData}
-                setPatientInfo={setPatientInfo}
                 setActiveTab={setActiveTab}
+                patientDetail={patientDetail}
+                setPatientDetail={setPatientDetail}
             />
         </div>
     );

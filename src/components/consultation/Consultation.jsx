@@ -2,11 +2,9 @@ import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiFillPlusCircle } from "react-icons/ai";
-import { GrGroup } from "react-icons/gr";
-import { HiClipboardList } from "react-icons/hi";
 const Consultation = () => {
     return (
-        <div className="bg-white w-full rounded-lg  scrollbar-thin scrollbar-track-slate-200   scrollbar-thumb-black overflow-y-auto">
+        <div className="bg-white w-full h-[49vh] rounded-lg  scrollbar-thin scrollbar-track-slate-200   scrollbar-thumb-black overflow-y-auto">
             <div className="p-4 ">
                 <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center">

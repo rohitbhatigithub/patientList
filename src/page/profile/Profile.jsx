@@ -1,35 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
 import Button from "../../components/Button/Button";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-const Profile = ({ patientInfo }) => {
+import Avatar from "../../assets/avatar.png";
+const Profile = ({ hendleUpdatePatient, patientInfo }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
     const [editMode, seEditMode] = useState(false);
     const [editDetails, setEditDetails] = useState(patientInfo);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        // Event listener for window resize
-        window.addEventListener("resize", handleResize);
-
-        // Initial check for mobile view
-        handleResize();
-
-        // Cleanup
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
-    };
-
-    const openSidebar = () => {
-        setIsOpen(true);
     };
     const editForm = () => seEditMode(!editMode);
 
@@ -40,25 +20,32 @@ const Profile = ({ patientInfo }) => {
     };
 
     return (
-        <div className="w-full h-full ">
+        <div className="w-full relative ">
             <div className="flex items-start gap-10  pl-2  ">
                 {/* sidebar */}
                 <div
-                    className={` relative duration-300 h-[92.5vh] ${
-                        isOpen ? "w-[60px]" : "w-[300px]"
+                    className={`absolute lg:relative duration-300 h-[92.5vh] ${
+                        !isOpen ? "w-[300px]" : "w-0"
                     } bg-white text-white`}
-                    onClick={toggleSidebar}
                 >
                     {isOpen ? (
-                        <div className="text-white">close</div>
+                        <div className="text-black" onClick={toggleSidebar}>
+                            <MdKeyboardDoubleArrowRight
+                                className="w-8 h-8"
+                                onClick={toggleSidebar}
+                            />
+                        </div>
                     ) : (
-                        <div className="text-white">open</div>
+                        <div className="text-black" onClick={toggleSidebar}>
+                            <MdKeyboardDoubleArrowRight
+                                className="w-8 h-8 rotate-180"
+                                onClick={toggleSidebar}
+                            />
+                        </div>
                     )}
 
                     {isOpen ? (
-                        <div className="text-black h-10 w-10">
-                            <MdKeyboardDoubleArrowRight className="w-8 h-8" />
-                        </div>
+                        ""
                     ) : (
                         <div className="px-2">
                             <div className="flex items-center justify-center flex-col my-4">
@@ -69,18 +56,18 @@ const Profile = ({ patientInfo }) => {
                                 <div>
                                     <img
                                         className="rounded-full w-16 h-16 p-2 "
-                                        src="https://images.pexels.com/photos/21038404/pexels-photo-21038404/free-photo-of-passerby-on-the-escalator-of-the-hamburg-subway-station.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                                        src={Avatar}
                                         alt="user"
                                     />
                                 </div>
                                 {/* patient name */}
                                 <div className="text-sm lg:text-lg text-teal-800 font-semibold">
-                                    {patientInfo.name}
+                                    {/* {patientInfo.name} */}
                                 </div>
                                 {/* patient location */}
                                 <div className="flex items-center flex-col md:flex-row text-xs md:text-sm ">
                                     <div className="text-gray-500">
-                                        {patientInfo.age} year old |{" "}
+                                        {/* {patientInfo.age} year old |{" "} */}
                                     </div>
                                     <div className="flex items-center">
                                         <div>
@@ -121,9 +108,13 @@ const Profile = ({ patientInfo }) => {
                     >
                         {editMode ? (
                             <>
-                                <Button text="Save" />
-
                                 <Button text="X" />
+                                <Button
+                                    text="Save"
+                                    onClick={() =>
+                                        hendleUpdatePatient(editDetails)
+                                    }
+                                />
                             </>
                         ) : (
                             <Button text="Edit Information" />
@@ -232,7 +223,7 @@ const Profile = ({ patientInfo }) => {
                                     )}
                                 </div>
                                 {/* Address */}
-                                <div className="flex items-start gap-[1.8rem] py-1 lg:py-2 lg:gap-[19.8rem]">
+                                <div className="flex items-start gap-[1.8rem] py-2 lg:py-2 lg:gap-[19.8rem]">
                                     <div>Address</div>
                                     {editMode ? (
                                         <input
@@ -251,7 +242,7 @@ const Profile = ({ patientInfo }) => {
                         </div>
                         {/* insurance */}
                         <div>
-                            <div className="text-xl font-bold text-teal-80">
+                            <div className="text-xl font-bold my-4 text-teal-80">
                                 Insurance
                             </div>
                             <div className="text-xs lg:text-sm text-gray-400">

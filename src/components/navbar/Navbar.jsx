@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
+import Avatar from "../../assets/avatar.png";
 const Navbar = ({ activeTab, setActiveTab }) => {
     const nevigate = useNavigate();
 
@@ -33,15 +33,13 @@ const Navbar = ({ activeTab, setActiveTab }) => {
                     <div>Consultrations</div>
                 </div>
                 {/* profile tab */}
-                <div
-                    className={`cursor-pointer text-xs lg:text-[1rem] ${
-                        activeTab === "/profile"
-                            ? "text-blue-500 underline"
-                            : ""
-                    }`}
-                    onClick={() => handleTabClick("/profile")}
-                >
-                    <div onClick={() => nevigate("profile")}>Profile</div>
+                <div>
+                    <div
+                        className="text-xs lg:text-[1rem]"
+                        onClick={() => nevigate("/")}
+                    >
+                        Profile
+                    </div>
                 </div>
                 {/* search icon */}
                 <div className="cursor-pointer  ">
@@ -55,7 +53,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
                 <div className="cursor-pointer">
                     <img
                         className="rounded-full w-11 h-11 p-2 "
-                        src="https://images.pexels.com/photos/21038404/pexels-photo-21038404/free-photo-of-passerby-on-the-escalator-of-the-hamburg-subway-station.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                        src={Avatar}
                         alt="user"
                     />
                 </div>

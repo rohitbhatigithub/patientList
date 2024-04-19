@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import UserName from "../userName/UserName";
 import Task from "../task/Task";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
-
-const Main = ({ patientData, setPatientInfo, setActiveTab }) => {
+import Avatar from "../../assets/avatar.png";
+const Main = ({
+    patientData,
+    setActiveTab,
+    patientDetail,
+    setPatientDetail,
+}) => {
     const nevigate = useNavigate();
-    const [patientDetail, setPatientDetail] = useState();
 
     const patientShortDec = (ele, id) => {
         setPatientDetail(ele);
-        setPatientInfo(() => ele);
         nevigate("/profile");
         setActiveTab("/profile");
+        localStorage.setItem("patient", JSON.stringify(ele));
     };
+
     return (
         <>
             <div className="bg-background px-4 ">
@@ -50,7 +55,7 @@ const Main = ({ patientData, setPatientInfo, setActiveTab }) => {
                                                         <div className="flex items-center gap-3">
                                                             <img
                                                                 className="w-10 h-10 rounded-full"
-                                                                src="https://unsplash.com/photos/oh0DITWoHi4/download?force=true&w=640"
+                                                                src={Avatar}
                                                                 alt="Christy"
                                                             />
                                                             <div>

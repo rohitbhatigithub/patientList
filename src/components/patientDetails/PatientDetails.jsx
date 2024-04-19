@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { BsFullscreen } from "react-icons/bs";
 import { CiShare1 } from "react-icons/ci";
 import { MdLocationPin } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
+import Avatar from "../../assets/avatar.png";
 const PatientDetails = () => {
     const [activeTab, setActiveTab] = useState("/Summery");
     const nevigate = useNavigate();
@@ -34,7 +33,7 @@ const PatientDetails = () => {
                     <div className="flex items-center justify-center my-1">
                         <img
                             className=" w-[3rem] h-[3rem] rounded-full"
-                            src="https://images.pexels.com/photos/2045600/pexels-photo-2045600.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            src={Avatar}
                             alt="pic"
                         />
                     </div>
@@ -42,7 +41,7 @@ const PatientDetails = () => {
                     {/* details */}
                     <div className="flex items-center flex-col my-1">
                         <div className="text-xl font-bold text-teal-800">
-                            George Gill
+                            Patient xyz
                         </div>
                         <div className="flex items-center text-sm ">
                             <div>25 year old | </div>

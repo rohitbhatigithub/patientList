@@ -2,11 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 import { FaCalendarAlt } from "react-icons/fa";
 import { GiMedicines } from "react-icons/gi";
-import { HiClipboardDocumentList } from "react-icons/hi2";
-import { BsFullscreen } from "react-icons/bs";
-import { CiLocationOn } from "react-icons/ci";
 import { CiShare1 } from "react-icons/ci";
-import { IoMdArrowDropdown } from "react-icons/io";
 import PatientDetails from "../patientDetails/PatientDetails";
 import Consultation from "../consultation/Consultation";
 export default function Task({ patientDetail }) {

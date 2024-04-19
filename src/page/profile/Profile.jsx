@@ -103,7 +103,7 @@ const Profile = ({ hendleUpdatePatient, patientInfo }) => {
                 {/* Additional content */}
                 <div className="w-full">
                     <div
-                        className=" flex  lg:justify-end m-2"
+                        className=" flex items-center ml-16  lg:justify-end lg:m-2"
                         onClick={editForm}
                     >
                         {editMode ? (
@@ -233,7 +233,7 @@ const Profile = ({ hendleUpdatePatient, patientInfo }) => {
                                             value={editDetails.address}
                                         />
                                     ) : (
-                                        <div className="h-6">
+                                        <div className="h-6 text-left">
                                             {editDetails.address}
                                         </div>
                                     )}
@@ -286,7 +286,9 @@ const Profile = ({ hendleUpdatePatient, patientInfo }) => {
                                             value={editDetails.additional_info}
                                         />
                                     ) : (
-                                        <div>{editDetails.additional_info}</div>
+                                        <div className="text-left">
+                                            {editDetails.additional_info}
+                                        </div>
                                     )}
                                 </div>
                             </div>

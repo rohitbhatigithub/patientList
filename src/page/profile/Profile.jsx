@@ -4,7 +4,7 @@ import Button from "../../components/Button/Button";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Avatar from "../../assets/avatar.png";
 const Profile = ({ hendleUpdatePatient, patientInfo }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [editMode, seEditMode] = useState(false);
     const [editDetails, setEditDetails] = useState(patientInfo);
 
@@ -62,12 +62,12 @@ const Profile = ({ hendleUpdatePatient, patientInfo }) => {
                                 </div>
                                 {/* patient name */}
                                 <div className="text-sm lg:text-lg text-teal-800 font-semibold">
-                                    {/* {patientInfo.name} */}
+                                    {editDetails.name}
                                 </div>
                                 {/* patient location */}
                                 <div className="flex items-center flex-col md:flex-row text-xs md:text-sm ">
                                     <div className="text-gray-500">
-                                        {/* {patientInfo.age} year old |{" "} */}
+                                        {editDetails.age} year old |
                                     </div>
                                     <div className="flex items-center">
                                         <div>

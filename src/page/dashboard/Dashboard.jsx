@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import Main from "../../components/main/Main";
 
-const Home = ({
+const Dashboard = ({
     patientData,
     setActiveTab,
     patientDetail,
     setPatientDetail,
-    PatientList,
+    getPatientList,
 }) => {
     useEffect(() => {
-        PatientList();
-    }, [PatientList]);
+        getPatientList();
+    }, [getPatientList]);
     return (
         <div>
             <Main
@@ -23,4 +23,4 @@ const Home = ({
     );
 };
 
-export default Home;
+export default Dashboard;

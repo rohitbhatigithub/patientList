@@ -12,7 +12,7 @@ const Main = ({
 }) => {
     const nevigate = useNavigate();
 
-    const patientShortDec = (ele, id) => {
+    const patientShortDec = (ele) => {
         setPatientDetail(ele);
         nevigate("/profile");
         setActiveTab("/profile");
@@ -34,7 +34,7 @@ const Main = ({
                         <Task patientDetail={patientDetail} />
                     </div>
 
-                    {/* second section */}
+                    {/* Display all petient  */}
                     <div className="bg-white rounded-lg overflow-y-auto h-[87vh]">
                         <div className="">
                             <div className="">
@@ -44,12 +44,10 @@ const Main = ({
                                             patientData.map((ele, id) => {
                                                 return (
                                                     <li
+                                                        key={id}
                                                         className="p-3 flex justify-between items-center user-card"
                                                         onClick={() =>
-                                                            patientShortDec(
-                                                                ele,
-                                                                id
-                                                            )
+                                                            patientShortDec(ele)
                                                         }
                                                     >
                                                         <div className="flex items-center gap-3">

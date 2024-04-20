@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./page/Home/Home";
-import Profile from "./page/profile/Profile";
+import Dashboard from "./page/dashboard/Dashboard";
 import Navbar from "./components/navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AditionanDetails from "./page/AditionanDetails/AditionanDetails";
 
 function App() {
     const [patientData, setPatientData] = useState([]);
     const [patientDetail, setPatientDetail] = useState();
     const [activeTab, setActiveTab] = useState("/");
     const API = "https://assessment.banoskolar.com/api/patientsList";
-    const PatientList = async () => {
+    const getPatientList = async () => {
         try {
             const data = await axios.get(API);
             setPatientData(() => data.data.patients);
@@ -19,10 +19,10 @@ function App() {
         }
     };
     useEffect(() => {
-        PatientList();
+        getPatientList();
     }, []);
 
-    const updatePatient = async (payload) => {
+    const putUpdatePatient = async (payload) => {
         const URL = `http://assessment.banoskolar.com/api/patient-records/${payload.id}`;
         try {
             const data = await axios.put(URL, payload);
@@ -32,15 +32,13 @@ function App() {
         }
     };
 
-    const hendleUpdatePatient = (patient) => {
-        updatePatient(patient);
+    const handleUpdatePatient = (patient) => {
+        putUpdatePatient(patient);
     };
     useEffect(() => {
         let patient = localStorage.getItem("patient");
         if (patient) {
-            let p = JSON.parse(patient);
-            console.log(p);
-            setPatientDetail(p);
+            setPatientDetail(JSON.parse(patient));
         }
     }, []);
     return (
@@ -60,12 +58,12 @@ function App() {
                             <Route
                                 path="/"
                                 element={
-                                    <Home
+                                    <Dashboard
                                         patientData={patientData}
                                         setActiveTab={setActiveTab}
                                         setPatientDetail={setPatientDetail}
                                         patientDetail={patientDetail}
-                                        PatientList={PatientList}
+                                        getPatientList={getPatientList}
                                     />
                                 }
                             />
@@ -73,9 +71,9 @@ function App() {
                             <Route
                                 path="/profile"
                                 element={
-                                    <Profile
-                                        hendleUpdatePatient={
-                                            hendleUpdatePatient
+                                    <AditionanDetails
+                                        handleUpdatePatient={
+                                            handleUpdatePatient
                                         }
                                         setPatientDetail={setPatientDetail}
                                         patientInfo={patientDetail}

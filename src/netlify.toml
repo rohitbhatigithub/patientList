@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/profile"
+  to = "index.html"
+  status = 200

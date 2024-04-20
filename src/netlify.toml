@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/profile"
-  to = "index.html"
+  from = "https://assessment.banoskolar.com/api/patientsList"
+  to = "https://shiny-kataifi-9bfc99.netlify.app/"
   status = 200

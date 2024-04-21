@@ -10,7 +10,7 @@ const Dashboard = ({
 }) => {
     useEffect(() => {
         getPatientList();
-    }, [getPatientList]);
+    }, []);
     return (
         <div>
             <Main

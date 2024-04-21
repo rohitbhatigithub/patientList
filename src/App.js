@@ -4,15 +4,16 @@ import Navbar from "./components/navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AditionanDetails from "./page/AditionanDetails/AditionanDetails";
+import { axiosClient } from "./api/axios";
 
 function App() {
     const [patientData, setPatientData] = useState([]);
     const [patientDetail, setPatientDetail] = useState();
     const [activeTab, setActiveTab] = useState("/");
-    const API = "https://assessment.banoskolar.com/api/patientsList";
+    const API = "api/patientsList";
     const getPatientList = async () => {
         try {
-            const data = await axios.get(API);
+            const data = await axiosClient.get(API);
             setPatientData(() => data.data.patients);
         } catch (error) {
             console.log(error);
@@ -23,7 +24,7 @@ function App() {
     }, []);
 
     const putUpdatePatient = async (payload) => {
-        const URL = `http://assessment.banoskolar.com/api/patient-records/${payload.id}`;
+        const URL = `api/patient-records/${payload.id}`;
         try {
             const data = await axios.put(URL, payload);
             console.log(data);

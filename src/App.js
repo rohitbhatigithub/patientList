@@ -11,6 +11,7 @@ function App() {
     const [patientDetail, setPatientDetail] = useState();
     const [activeTab, setActiveTab] = useState("/");
     const API = "api/patientsList";
+
     const getPatientList = async () => {
         try {
             const data = await axiosClient.get(API);
@@ -26,7 +27,7 @@ function App() {
     const putUpdatePatient = async (payload) => {
         const URL = `api/patient-records/${payload.id}`;
         try {
-            const data = await axios.put(URL, payload);
+            const data = await axiosClient.put(URL, payload);
             console.log(data);
         } catch (error) {
             console.log(error);
@@ -81,7 +82,6 @@ function App() {
                                     />
                                 }
                             />
-                            <Route path="*" element={<Dashboard />} />
                         </Routes>
                     </BrowserRouter>
                 </div>

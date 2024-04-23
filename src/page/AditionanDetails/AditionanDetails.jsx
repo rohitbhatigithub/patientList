@@ -9,7 +9,6 @@ const AditionanDetails = ({ handleUpdatePatient, patientInfo }) => {
     const [isOpen, setIsOpen] = useState(true);
     const [editMode, seEditMode] = useState(false);
     const [editDetails, setEditDetails] = useState(patientInfo);
-
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };

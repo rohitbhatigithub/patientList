@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./page/dashboard/Dashboard";
 import Navbar from "./components/navbar/Navbar";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import AditionanDetails from "./page/AditionanDetails/AditionanDetails";
 import { axiosClient } from "./api/axios";
 
